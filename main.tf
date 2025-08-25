@@ -1,3 +1,18 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "aws" {
+  profile    = "default"
+  region     = "af-south-1"
+}
+
+
 data "aws_ami" "app_ami" {
   most_recent = true
 
@@ -115,4 +130,5 @@ module "blog_sg" {
   ingress_cidr_blocks = ["0.0.0.0/0"]
   egress_rules = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
+
 }
