@@ -8,10 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  profile    = "default"
   region     = "af-south-1"
 }
-
 
 data "aws_ami" "app_ami" {
   most_recent = true
@@ -132,3 +130,4 @@ module "blog_sg" {
   egress_cidr_blocks = ["0.0.0.0/0"]
 
 }
+
