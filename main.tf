@@ -64,8 +64,8 @@ module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
   name    = "blog-alb"
-  vpc_id  = "vpc-abcde012"
-  subnets = ["subnet-abcde012", "subnet-bcde012a"]
+  vpc_id  = module.vpc.public_subnets[0]
+  subnets = [module.vpc.public_subnets[0], module.vpc.public_subnets[1]]
 
   # Security Group
   security_group_ingress_rules = {
@@ -131,5 +131,6 @@ module "blog_sg" {
   egress_cidr_blocks = ["0.0.0.0/0"]
 
 }
+
 
 
